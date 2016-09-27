@@ -1,11 +1,12 @@
 <?php
 
-$name = 'AnnieSenchenko';
+$name = 'AnnieSenchenkoРфіппф';
 
 function rewrite($name){
-    $pattern = '#([A-Z][^A-Z]*)#';
-    $array = preg_split($pattern, $name, null, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
-    return $array[0].' '.$array[1];    
+    $pattern = '/\p{Lu}\p{Ll}+/u';
+    $arr = array();
+    preg_match_all($pattern, $name, $arr);
+    return $arr[0][0].' '.$arr[0][1];   
 }
 
 echo rewrite($name);
